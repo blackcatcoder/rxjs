@@ -1,0 +1,9 @@
+<h1>hello world</h1>
+
+<div *ngIf="products$ | async as products">
+    <button type="button" *ngFor='let product of products'>
+        {{product.id}}-({{product.name}})
+    </button>
+</div>
+
+<button (click)="sendCategory()">category 1</button>
