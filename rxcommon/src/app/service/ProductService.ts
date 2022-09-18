@@ -9,7 +9,7 @@ export class ProductService{
 
     private productUrl = "http://localhost:8080/product/getAll";
 
-    categorySubject = new Subject<number>();
+    private categorySubject = new Subject<number>();
     categorySelectedAction$ = this.categorySubject.asObservable();
 
     constructor(private http: HttpClient){}
@@ -29,7 +29,11 @@ export class ProductService{
         switchMap(catId => this.http.get<Product[]>(`${this.productUrl}/${catId}`)
         .pipe(
             tap(data => console.log(data))
-        )));
+    )));
+
+    getProductByCategory(catId: number){
+        this.categorySubject.next(catId);
+    }
 
     handleError(){
         console.log("something went wrong");
