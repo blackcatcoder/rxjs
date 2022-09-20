@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, Subject, switchMap, tap } from "rxjs";
+import { catchError, Observable, Subject, switchMap, tap, throttleTime } from "rxjs";
 import { Product } from "../type/Product";
 
 
