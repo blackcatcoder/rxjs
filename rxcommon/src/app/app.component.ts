@@ -47,6 +47,6 @@ export class AppComponent implements OnInit, OnDestroy{
   sendCategory(){
     console.log("category click");
     const catId = 1;
-    this.productService.categorySubject.next(catId);
+    this.productService.getProductByCategory(catId);
   }
 }

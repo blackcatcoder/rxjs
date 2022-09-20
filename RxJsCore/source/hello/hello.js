@@ -13,7 +13,8 @@ const observable = new Observable((subscriber) => {
 
 
 console.log('just before subscribe');
-observable.subscribe({
+
+const observer = {
   next(x) {
     console.log('got value ' + x);
   },
@@ -23,5 +24,9 @@ observable.subscribe({
   complete() {
     console.log('done');
   },
-});
+}
+
+observable.subscribe(observer);
 console.log('just after subscribe');
+
+observable.subscribe(observer);

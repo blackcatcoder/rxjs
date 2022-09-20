@@ -1,0 +1,47 @@
+
+/* block */
+.container{
+    padding: 1em;
+    background: #9494b8;
+}
+
+.button{
+
+}
+
+.button--state-success{
+
+}
+
+.button--state-danger{
+
+}
+
+/*----------------------------------------------------------*/
+/* block */
+.card{
+
+}
+
+/* element */
+.card__picture{
+
+}
+.card__title{
+
+}
+.card__description{
+
+}
+.card__button{
+
+}
+
+/* modifier */
+.card__button--active{
+
+}
+/*----------------------------------------------------------/*
+
+
+/*----------------------------------------------------------*/
