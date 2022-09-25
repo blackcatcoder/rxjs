@@ -30,7 +30,7 @@ public class ProductController {
 
         // userName
         User user1 = new User(20l, "vinv.2491@gmail.com", "user20");
-        User user2 = new User(22l, "vanvi.dtld@gmail.com", "user21");
+        User user2 = new User(22l, "vanvi.dtld@gmail.com", "user22");
         users = new ArrayList<>();
         users.add(user1);
         users.add(user2);
@@ -77,17 +77,35 @@ public class ProductController {
         return this.users.stream().map(user -> new UserModel(user.getId(), user.getEmail(), user.getUserName())).collect(Collectors.toList());
     }
 
+    @GetMapping("user/{userName}")
+    public UserModel getUserByUserName(@PathVariable String userName){
+        logger.info("-----> getUserByUserName");
+        return this.users.stream().findFirst().map(user -> new UserModel(user.getId(), user.getEmail(), user.getUserName())).orElse(null);
+    }
+
     @GetMapping("product/getAll")
-    public List<ProductModel> getProduct(){
+    public List<ProductModel> getAllProduct(){
         return this.products.entrySet().stream().map(Map.Entry::getValue).map(product -> new ProductModel(product.getId(), product.getName())).collect(Collectors.toList());
     }
 
     @GetMapping("user/{userId}/products")
     public List<ProductModel> getProductsByUserId(@PathVariable Long userId){
+        logger.info("-----> getProductsByUserId");
         return this.products.entrySet().stream()
                 .map(Map.Entry::getValue).filter(product -> product.getUserId().equals(userId))
                 .map(product -> new ProductModel(product.getId(), product.getName()))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("user/test/{userName}/products")
+    public List<ProductModel> getProductsByUserName(@PathVariable String userName){
+        // handle get product by userName here
+        return this.products.entrySet().stream().map(Map.Entry::getValue).map(product -> new ProductModel(product.getId(), product.getName())).collect(Collectors.toList());
+
+//        return this.products.entrySet().stream()
+//                .map(Map.Entry::getValue).filter(product -> product.getUserId().equals(userName))
+//                .map(product -> new ProductModel(product.getId(), product.getName()))
+//                .collect(Collectors.toList());
     }
 
     @GetMapping("product/{productId}/productDetail")

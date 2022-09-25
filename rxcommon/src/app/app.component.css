@@ -37,11 +37,54 @@
 
 }
 
+/* user */
+.user{
+
+}
+.user__label{
+
+}
+.user__select{
+
+}
+.user__option{
+
+}
+
+
 /* modifier */
 .card__button--active{
 
 }
-/*----------------------------------------------------------/*
+/*product list*/
+.product_list{
+    background: yellow;
+}
+.product_list__title{
+
+}
+.product_list_item{
+
+}
 
 
-/*----------------------------------------------------------*/
+/* product detail */
+.product_detail{
+    background: green;
+}
+.product_detail__title{
+
+}
+.product_detail__row{
+
+}
+.product_detail__header{
+
+}
+.product_detail__content{
+
+}
+
+.container2{
+    background: #6666ff;
+}

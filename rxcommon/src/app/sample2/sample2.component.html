@@ -1,0 +1,23 @@
+
+<div class="container">
+    <h1>sample 2</h1>
+
+    <div >
+        <label for="user2">enter user</label>
+        <input type="text" name="user2" id="user2" >
+        <button (click)="getProductByUserName('test')">get product by username</button>
+    </div>
+
+    <div class="product_list">
+        <p>product list</p>
+        <div *ngIf="products$ | async as products">
+            <button type="button" *ngFor='let product of products'>
+                {{product.id}}-({{product.name}})
+            </button>
+        </div>
+    </div>
+
+    <div class="product_detail">
+        <p>product detail</p>
+    </div>
+</div>
