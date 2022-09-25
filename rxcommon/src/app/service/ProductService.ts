@@ -1,10 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, Subject, switchMap, tap } from "rxjs";
+import { catchError, Observable, Subject, switchMap, tap, throttleTime } from "rxjs";
 import { CategoryType } from "../type/CategoryType";
 import { ProductDetailType } from "../type/ProductDetailType";
 import { ProductType } from "../type/ProductType";
-
 
 
 @Injectable({providedIn: 'root'})
