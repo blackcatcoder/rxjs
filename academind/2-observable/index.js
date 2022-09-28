@@ -1,4 +1,4 @@
-const { Observable, fromEvent, throttleTime, map } = rxjs;
+const { Observable, fromEvent } = rxjs;
 
 // create and observable and put some data
 const observable = new Observable((subscriber) => {

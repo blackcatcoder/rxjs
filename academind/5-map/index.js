@@ -1,4 +1,4 @@
-const { Observable, Subject, fromEvent, of, throttleTime, map, interval, debounceTime, distinctUntilChanged, reduce, scan, pluck, mergeMap, switchMap } = rxjs;
+const { fromEvent, map, interval, mergeMap, switchMap } = rxjs;
 
 const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
@@ -39,7 +39,7 @@ const button = document.getElementById("buttonId");
 const observableButton = fromEvent(button, 'click');
 
 const subscriptionButton = observableButton
-    .pipe(switchMap(() => {
+    .pipe(switchMap(() => { // auto unsubscribe and then subscribe new latest observable
         return observable2
     }))
     .subscribe(data => console.log(data));

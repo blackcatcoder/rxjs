@@ -1,4 +1,4 @@
-const { Observable, Subject, BehaviorSubject, fromEvent, throttleTime, map, interval } = rxjs;
+const { Observable, Subject, BehaviorSubject } = rxjs;
 
 
 // create subject like create observable

@@ -27,7 +27,6 @@ public class ProductController {
 
     @PostConstruct
     private void init(){
-
         // userName
         User user1 = new User(20l, "vinv.2491@gmail.com", "user20");
         User user2 = new User(22l, "vanvi.dtld@gmail.com", "user22");
@@ -69,7 +68,6 @@ public class ProductController {
         products.put(p3.getId(), p3);
         products.put(p4.getId(), p4);
         products.put(p5.getId(), p5);
-
     }
 
     @GetMapping("user/getAll")
