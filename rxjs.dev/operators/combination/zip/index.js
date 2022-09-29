@@ -1,5 +1,8 @@
 const { Observable, fromEvent, map, interval, mergeAll, zip, delay, combineLatestWith, combineLatest } = rxjs;
 
+// link
+// https://indepth.dev/reference/rxjs/operators/zip
+
 // observer
 const observer = {
     next: (data) => console.log(data),
