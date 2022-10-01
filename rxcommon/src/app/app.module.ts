@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductService } from './service/ProductService';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +18,7 @@ import { Sample8Component } from './sample8/sample8.component';
 import { Sample9Component } from './sample9/sample9.component';
 import { Sample10Component } from './sample10/sample10.component';
 import { Product2Service } from './sample2/service/Product2Service';
+import { Product1Service } from './sample1/service/Product1Service';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { Product2Service } from './sample2/service/Product2Service';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [ProductService, Product2Service],
+  providers: [Product1Service, Product2Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

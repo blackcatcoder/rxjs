@@ -1,1 +1,79 @@
-<p>sample1 works!</p>
+
+<p>sample 1</p>
+<p>link: <a href="https://www.youtube.com/watch?v=0EefbG6N3vY&list=PPSV">link</a></p>
+
+<p>rxjs pipelines</p>
+<p>retrieve related data pipeline</p>
+<p>lookup reference property pipeline</p>
+<p>grouping pipeline</p>
+<p>autocomplete pipeline</p>
+
+
+<hr>
+
+<div>
+    <input type="text" [(ngModel)]="userInput">
+    <button (click)="findAllUser()">find all user</button><br>
+    <span>{{userInput}}</span>
+    <p *ngIf="users.length == 0">there is no user found</p>
+    <div *ngIf="users.length > 0">
+        <div *ngFor="let user of users">
+            <span>id: {{user.id}}</span>
+            <span>email: {{user.email}}</span>
+            <span>userName: {{user.userName}}</span>
+        </div>
+    </div>
+</div>
+
+<div>
+    <input type="text" [(ngModel)]="userInput">
+    <button (click)="findPostsByUserName()">find post by user name</button><br>
+    <span>{{userInput}}</span>
+
+    <p *ngIf="posts.length == 0">there is no post found</p>
+    <div *ngIf="posts.length > 0">
+        <div *ngFor="let post of posts" class="card">
+            <span>id: {{post.title}}</span><br>
+            <span>body: {{post.body}}</span><br>
+            <span>category: {{post.categoryId}}</span>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="container">
+    <h1>sample 1</h1>
+
+    <div class="user">
+        <label class="user__label" for="users">Choose a user:</label>
+        <select class="user__select" id="users" name="users" ngModel (ngModelChange)="getProductByUser($event)">
+            <option class="user__option" value="">select an user</option>
+            <option class="user__option" *ngFor='let user of users' [ngValue]="user.id">{{user.userName}}</option>
+        </select>
+    </div>
+
+    <div class="product_list">
+        <p class="product_list__title">product list</p>
+        <p class="product_list__item" *ngFor='let product of products' (click)="getProductDetail(product.id)">{{product.name}}</p>
+        <p *ngIf="!products.length">there is no product list</p>
+    </div>
+
+    <div class="product_detail" *ngIf="productDetail && products.length">
+        <p class="product_detail__title">product detail</p>
+
+        <div class="product_detail__row">
+            <p class="product_detail__header">product name</p>
+            <p class="product_detail__header">product description</p>
+            <p class="product_detail__header">category id</p>
+            <p class="product_detail__header">category name</p>
+        </div>
+
+        <div class="product_detail__row">
+            <p class="product_detail__content">{{productDetail.name}}</p>
+            <p class="product_detail__content">{{productDetail.desc}}</p>
+            <p class="product_detail__content">{{productDetail.id}}</p>
+            <p class="product_detail__content">{{productDetail.id}}</p>
+        </div>
+    </div>
+</div> -->

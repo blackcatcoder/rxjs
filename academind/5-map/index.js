@@ -43,14 +43,19 @@ const button = document.getElementById("buttonId");
 const observableButton = fromEvent(button, 'click');
 
 const subscriptionButton = observableButton
-    .pipe(switchMap(() => { // auto unsubscribe and then subscribe new latest observable
+    .pipe(switchMap(() => { // auto unsubscribe and then subscribe new latest event in observable
         return observable2
     }))
-    .subscribe(data => console.log(data));
+    .subscribe({next: data => console.log(data), complete: () => console.log('complete')});
 
 setTimeout(() => {
     subscriptionButton.unsubscribe();
 }, 50000);
 
 
-// 
+// conclusion 
+/*
+- when observableButton have new event 
+    + it will auto unsubscribe and subscribe new observable 
+    + and then return another observable.
+*/
