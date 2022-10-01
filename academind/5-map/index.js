@@ -15,19 +15,23 @@ const observableLastName = fromEvent(lastName, 'input');
 // const observer = {
 //     next: (event) => fullName.textContent = event.target.value
 // }
-const subscriptionFirstName = observableFirstName
-    .pipe(map(event => event.target.value))
-    .subscribe(data => showFirstName.textContent = data);
+// const subscriptionFirstName = observableFirstName
+//     .pipe(map(event => event.target.value))
+//     .subscribe(data => showFirstName.textContent = data);
 
-const subscriptionLastName = observableLastName
-    .pipe(map(event => event.target.value))
-    .subscribe(data => showLastName.textContent = data);
+// const subscriptionLastName = observableLastName
+//     .pipe(map(event => event.target.value))
+//     .subscribe(data => showLastName.textContent = data);
 
 const subscription = observableFirstName
     .pipe(mergeMap(event1 => {
         return observableLastName.pipe(map(event2 => event1.target.value +' ' +event2.target.value))
     }))
     .subscribe(combineValue => showFullName.textContent = combineValue);
+
+// mergeMap
+// merge all event of first observable to each event ob new observable
+
 
 
 // switchMap
@@ -47,3 +51,6 @@ const subscriptionButton = observableButton
 setTimeout(() => {
     subscriptionButton.unsubscribe();
 }, 50000);
+
+
+// 
