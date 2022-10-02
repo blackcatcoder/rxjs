@@ -1,72 +1,60 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, Subject, switchMap, map, of, combineLatest, throwError } from "rxjs";
-import { PostType } from "src/app/type/PostType";
-import { UserType } from "../../type/UserType";
+import { catchError, Observable, Subject, switchMap, tap, throttleTime } from "rxjs";
+import { CategoryType } from "../../type/CategoryType";
+import { ProductDetailType } from "../../type/ProductDetailType";
+import { ProductType } from "../../type/ProductType";
+
 
 @Injectable({providedIn: 'root'})
-export class User1Service{
+export class Product1Service{
 
-    private sample1Url: string = "http://localhost:8080/sample1";
+    // private productUrl = "http://localhost:8080";
 
-    //
-    private userSubject = new Subject<string>();
-    enterUser$ = this.userSubject.asObservable();
-    
-    //
-    postForUser$ = this.enterUser$.pipe(
-        switchMap(userName => this.getUserId(userName)),
-        switchMap(userId => this.getPostsForUser(userId))
-    );
+    // private categorySubject = new Subject<number>();
+    // categorySelectedAction$ = this.categorySubject.asObservable();
 
-    //
-    postsWithCategory$ = combineLatest([
-        this.httpClient.get<PostType[]>(this.sample1Url)
-    ])
+    // constructor(private http: HttpClient){}
 
+    // case 1
+    // getProducts(): Observable<Product[]>{
+    //     return this.http.get<Product[]>(this.productUrl)
+    //         .pipe(tap(data => console.log(data)));
+    // }
 
-    constructor(private httpClient: HttpClient){}
+    // case 2
+    // products$ = this.http.get<Product[]>(this.productUrl)
+    //     .pipe(tap(data => console.log(data)));
 
+    // case 3
+    // products$ = this.categorySelectedAction$.pipe(
+    //     switchMap(catId => this.http.get<ProductType[]>(`${this.productstUrl}/${catId}`)
+    //     .pipe(
+    //         tap(data => console.log(data))
+    // )));
 
-    getAllUser(){
-        return this.httpClient
-            .get<UserType[]>(`${this.sample1Url}/user/getAll`);
-    }
+    // getProductByCategory(catId: number){
+    //     this.categorySubject.next(catId);
+    // }
 
-    findPostsByUserName(userName: string){
-        this.userSubject.next(userName);
-        // return this.httpClient
-        //     .get<PostType[]>(`${this.sample1Url}/user/${userName}/getPosts`);
-    }
+    // getAllProduct(){
+    //     return this.http.get<ProductType[]>(`${this.productUrl}/product/getAll`);
+    // }
 
-    private getUserId(userName: string): Observable<number>{
-        return this.httpClient.get<UserType[]>(`${this.sample1Url}/user/${userName}`).pipe(
-            catchError(this.handleError),
-            map(users => (users.length === 0) ? 0 : users[0].id)
-        );
-    }
+    // handleError(){
+    //     console.log("something went wrong");
+    // }
 
-    private getPostsForUser(userId: number): Observable<PostType[]>{
-        return this.httpClient.get<PostType[]>(`${this.sample1Url}/user/${userId}/getPosts`).pipe(
-            catchError(this.handleError)
-        );
-    }
+    // getProductByUserId(userId: number){
+    //     return this.http.get<ProductType[]>(`${this.productUrl}/user/${userId}/products`);
+    // }
 
-    handleError(err: any): Observable<never>{
-        // in a real world app, we may send the server to some remote logging infrastructure
-        // instead of just logging it to the console
-        let errorMessage: string;
-        if (err.error instanceof ErrorEvent) {
-        // A client-side or network error occurred. Handle it accordingly.
-        errorMessage = `An error occurred: ${err.error.message}`;
-        } else {
-        // The backend returned an unsuccessful response code.
-        // The response body may contain clues as to what went wrong,
-        errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
-        }
-        console.error(err);
-        return throwError(errorMessage);
-    }
+    // getProductDetail(productId: number){
+    //     return this.http.get<ProductDetailType>(`${this.productUrl}/product/${productId}/productDetail`)
+    // }
 
+    // getCategory(productId: number){
+    //     return this.http.get<CategoryType>(`${this.productUrl}/product/${productId}/category`)
+    // }
 
 }

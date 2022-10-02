@@ -18,7 +18,7 @@ import { Sample8Component } from './sample8/sample8.component';
 import { Sample9Component } from './sample9/sample9.component';
 import { Sample10Component } from './sample10/sample10.component';
 import { Product2Service } from './sample2/service/Product2Service';
-import { Product1Service } from './sample1/service/Product1Service';
+import { Product1Service } from './sample1/service/User1Service';
 
 @NgModule({
   declarations: [

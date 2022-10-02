@@ -1,11 +1,11 @@
 package com.backendapi.model;
 
-public class Supplier {
+public class SupplierModel {
 
     private String id;
     private String name;
 
-    public Supplier(String id, String name) {
+    public SupplierModel(String id, String name) {
         this.id = id;
         this.name = name;
     }

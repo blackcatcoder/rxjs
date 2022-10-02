@@ -1,14 +1,13 @@
 package com.backendapi.model;
 
-public class Post {
+public class PostModel {
     private long id;
     private String title;
     private String body;
-
     private long userId;
     private long categoryId;
 
-    public Post(long id, String title, String body, long userId, long categoryId) {
+    public PostModel(long id, String title, String body, long userId, long categoryId) {
         this.id = id;
         this.title = title;
         this.body = body;

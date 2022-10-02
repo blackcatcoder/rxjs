@@ -25,5 +25,6 @@ switched.subscribe(x => console.log(x));
 - whenever current observable(1) emit new value -> the new observable(2) will unsubscribe and subscribe new observable
 - (create new observabe whenever first observable have new element)
 
+- transform from current observable to next observable
 
 */

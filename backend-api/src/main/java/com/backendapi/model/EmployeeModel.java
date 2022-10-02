@@ -1,10 +1,10 @@
 package com.backendapi.model;
 
-public class Employee {
+public class EmployeeModel {
     private String id;
     private String name;
 
-    public Employee(String id, String name){
+    public EmployeeModel(String id, String name){
         this.id = id;
         this.name = name;
     }

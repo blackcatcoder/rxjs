@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { catchError, EMPTY, Observable, Subscription } from 'rxjs';
 import { PostType } from '../type/PostType';
 import { UserType } from '../type/UserType';
-import { User1Service } from './service/User1Service';
+import { User1Service } from './service/Post1Service';
 
 @Component({
   selector: 'app-sample1',
@@ -11,30 +11,40 @@ import { User1Service } from './service/User1Service';
 })
 export class Sample1Component implements OnInit, OnDestroy {
 
-  // title = 'rxcommon';
+  errorMessage: string = '';
 
   users: UserType[] = [];
+  users1: UserType[] = [];
   posts: PostType[] = [];
-  // productDetail: ProductDetailType | null = null;
 
   private userSub!: Subscription;
-  private postSub!: Subscription;
-  // private productDetailSub!: Subscription;
+  private userSub1!: Subscription;
 
-  postForUser$!: Observable<PostType[]>;
+  postsForUser$: Observable<PostType[]> = this.user1Service.postsForUser$.pipe(
+    catchError(err => {
+      this.errorMessage = err;
+      return EMPTY;
+    })
+  );
 
+  postsWithCategory4$: Observable<PostType[]> = this.user1Service.postsWithCategory4$.pipe(
+    catchError(err => {
+      this.errorMessage = err;
+      return EMPTY;
+    })
+  )
 
-  //   // case 1
-  //   allProduct: ProductType[] = [];
+  postsWithCategory$!: Observable<PostType[]>;
 
-  //   // case 2
-  //   products$!: Observable<ProductType[]>;
-
-  userInput: string = "";
+  userInput1: string = "";
+  userInput2: string = "";
+  userInput3: string = "";
+  userInput4: string = "";
 
   constructor(private user1Service: User1Service) { }
 
   ngOnInit(): void {
+
   }
 
   findAllUser(){
@@ -44,39 +54,30 @@ export class Sample1Component implements OnInit, OnDestroy {
     });
   }
 
+  findlUsersByUserName(){
+    this.userSub1 = this.user1Service.findlUsersByUserName(this.userInput1).pipe().subscribe(data => {
+      this.users1 = data;
+    });
+  }
+
   findPostsByUserName(){
-    this.user1Service.findPostsByUserName(this.userInput);
-    // this.postSub = this.user1Service.findPostsByUserName(this.userInput).pipe().subscribe(data => {
-    //   this.posts = data;
-    // });
+    console.log("findPostsByUserName called");
+    this.user1Service.findPostsByUserName(this.userInput2);
+  }
+
+  findPostsWithCategoryName(){
+    console.log("findPostsWithCategoryName called");
+    this.postsWithCategory$ = this.user1Service.findPostsWithCategoryName();
+  }
+
+  findPostsByUserNameWithCategoryName(){
+    console.log("findPostsByUserNameWithCategoryName called");
+    this.user1Service.findPostsByUserNameWithCategoryName(this.userInput4);
   }
 
   ngOnDestroy(): void {
       this.userSub.unsubscribe();
+      this.userSub1.unsubscribe();
   }
-
-  // getProductByUser(userId: ElementRef){
-
-  //   this.productDetail = null;
-
-  //   console.log("userId: ");
-  //   console.log(userId);
-
-  //   this.productSub = this.productService.getProductByUserId(+userId).subscribe(response => {
-  //     this.products = response;
-  //   });
-  // }
-
-  // getProductDetail(productId: number){
-  //   this.productDetailSub = this.productService.getProductDetail(productId).subscribe(response => {
-  //     this.productDetail = response;
-  //   })
-  // }
-
-  // sendCategory(){
-  //   console.log("category click");
-  //   const catId = 1;
-  //   //this.productService.getProductByCategory(catId);
-  // }
 
 }
