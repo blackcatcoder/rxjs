@@ -15,3 +15,11 @@ mousemoves$
 // 'click'
 // 'click'
 // 'dblclick'
+
+/*
+conclusion
+instead of we will have 3 subscription we only just need 1 subscription
+- above it will merge click$ and doubleclick$ to  mousemove$
+- 3 observable and 1 subscription
+
+*/

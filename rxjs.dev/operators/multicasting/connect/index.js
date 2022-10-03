@@ -1,4 +1,4 @@
-const {  of, tap, connect, merge, map, filter  } = rxjs;
+const {  of, tap, connect, merge, mergeWith, map, filter  } = rxjs;
 
 const source$ = of(1, 2, 3, 4, 5).pipe(
   tap({
@@ -36,6 +36,7 @@ source$.pipe(
 'odd 5'
 
 /*
+conclusion
 
 
 */

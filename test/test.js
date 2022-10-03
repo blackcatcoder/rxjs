@@ -1,18 +1,14 @@
-const { Observable, create, fromEvent, of, range, filter, map } = rxjs;
+const { Observable, create, interval, fromEvent, of, range, filter, map, tap } = rxjs;
 
-console.log("----")
-const observeble = of(Math.random());
-observeble.subscribe(console.log)
-observeble.subscribe(console.log)
+const source$ = of([1, 2, 3, 4, 5])
+//const source$ = interval(1000);
+// .pipe(
+//   tap({
+//     subscribe: () => console.log('subscription started'),
+//     next: n => console.log(`source emitted ${ n }`)
+//   })
+// );
 
-console.log("-----")
-const cold = Observable.create(obs => obs.next(Math.random()));
-cold.subscribe(console.log);
-cold.subscribe(console.log);
 
-console.log("------")
-const cold2 = new Observable((subscriber) => {
-  subscriber.next(Math.random())
-});
-cold2.subscribe(console.log); // value different
-cold2.subscribe(console.log); // value different
+source$.subscribe((x) => console.log('x: ', x));
+source$.subscribe((x) => console.log('y: ', x));
