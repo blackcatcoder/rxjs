@@ -15,13 +15,13 @@ const observableLastName = fromEvent(lastName, 'input');
 // const observer = {
 //     next: (event) => fullName.textContent = event.target.value
 // }
-const subscriptionFirstName = observableFirstName
-    .pipe(map(event => event.target.value))
-    .subscribe(data => showFirstName.textContent = data);
+// const subscriptionFirstName = observableFirstName
+//     .pipe(map(event => event.target.value))
+//     .subscribe(data => showFirstName.textContent = data);
 
-const subscriptionLastName = observableLastName
-    .pipe(map(event => event.target.value))
-    .subscribe(data => showLastName.textContent = data);
+// const subscriptionLastName = observableLastName
+//     .pipe(map(event => event.target.value))
+//     .subscribe(data => showLastName.textContent = data);
 
 const subscription = observableFirstName
     .pipe(mergeMap(event1 => {
