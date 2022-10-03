@@ -1,49 +1,26 @@
 
-<div class="container">
-    <h1>sample 1</h1>
-
-    <div class="user">
-        <label class="user__label" for="users">Choose a user:</label>
-        <select class="user__select" id="users" name="users" ngModel (ngModelChange)="getProductByUser($event)">
-            <option class="user__option" value="">select an user</option>
-            <option class="user__option" *ngFor='let user of users' [ngValue]="user.id">{{user.userName}}</option>
-        </select>
-    </div>
-
-    <div class="product_list">
-        <p class="product_list__title">product list</p>
-        <p class="product_list__item" *ngFor='let product of products' (click)="getProductDetail(product.id)">{{product.name}}</p>
-        <p *ngIf="!products.length">there is no product list</p>
-    </div>
-
-    <div class="product_detail" *ngIf="productDetail && products.length">
-        <p class="product_detail__title">product detail</p>
-
-        <div class="product_detail__row">
-            <p class="product_detail__header">product name</p>
-            <p class="product_detail__header">product description</p>
-            <p class="product_detail__header">category id</p>
-            <p class="product_detail__header">category name</p>
-        </div>
-
-        <div class="product_detail__row">
-            <p class="product_detail__content">{{productDetail.name}}</p>
-            <p class="product_detail__content">{{productDetail.desc}}</p>
-            <p class="product_detail__content">{{productDetail.id}}</p>
-            <p class="product_detail__content">{{productDetail.id}}</p>
-        </div>
-    </div>
-</div>
 
 
-<app-sample2></app-sample2>
+<h1>choose sample</h1>
+
+<h4>
+    <a href="#" routerLink="/sample1">sample 1</a>
+    <a href="#" routerLink="/sample2">sample 2</a>
+    <a href="#" routerLink="/sample3">sample 3</a>
+    <a href="#" routerLink="/sample4">sample 4</a>
+    <a href="#" routerLink="/sample5">sample 5</a>
+</h4>
 
 
-<br>
+<router-outlet></router-outlet>
+
+
+
+<!-- <br>
 <button (click)="sendCategory()">category 1</button>
 
 <div *ngIf="products$ | async as products">
     <button type="button" *ngFor='let product of products'>
         {{product.id}}-({{product.name}})
     </button>
-</div>
+</div> -->

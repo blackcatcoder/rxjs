@@ -23,6 +23,7 @@ const subscription2 = subject.subscribe(observer2);
 // active to put item to observable
 subject.next(1);
 subject.next(2);
+subject.next(Math.random())
 //subject.error('kaka');
 subject.complete();
 
@@ -32,7 +33,8 @@ setTimeout(() => {
 }, 5000);
 
 
-
+//--------------------------------------------
+console.log('---------------------------------')
 // behavior subject
 //const clickSubject = new Subject(); // tuong duong voi 1 observable
 const clickSubject = new BehaviorSubject('default value'); // offer a default value
@@ -45,5 +47,27 @@ button1.addEventListener('click', () => {
 });
 
 clickSubject.subscribe((value) => {
+    console.log('behavior 1: ', value);
     span.textContent = value
 });
+clickSubject.subscribe((value) => {
+    console.log('behavior 2: ', value);
+    span.textContent = value
+});
+
+setTimeout(() => {
+    clickSubject.subscribe((value) => {
+        console.log('behavior 3: ', value);
+      //  span.textContent = value
+    });
+}, 3000);
+
+
+//--------------------------------------------
+console.log('---------------------------------')
+const source$ = new Observable((subscriber) => {
+    subscriber.next(Math.random())
+});
+source$.subscribe((data) => console.log('observable 1: ', data));
+source$.subscribe((data) => console.log('observable 2: ', data));
+// conclusion: value of each time subscribe will be change

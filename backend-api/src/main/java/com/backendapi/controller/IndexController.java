@@ -1,6 +1,6 @@
 package com.backendapi.controller;
 
-import com.backendapi.model.Employee;
+import com.backendapi.model.EmployeeModel;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
 
     @GetMapping()
-    public Employee getEmployee(){
-        return new Employee("id", "name");
+    public EmployeeModel getEmployee(){
+        return new EmployeeModel("id", "name");
     }
 
 

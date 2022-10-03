@@ -1,1 +1,87 @@
-<p>sample1 works!</p>
+
+<p>sample 1</p>
+<p>link: <a href="https://www.youtube.com/watch?v=0EefbG6N3vY&list=PPSV">link</a></p>
+<p>rxjs pipelines</p>
+<p>retrieve related data pipeline</p>
+<p>lookup reference property pipeline</p>
+<p>grouping pipeline: to work with multiple streams, use a combination operator</p>
+<p>autocomplete pipeline</p>
+<hr>
+
+<div>
+    <h1>find all user</h1>
+    <button (click)="findAllUser()">find all user</button><br>
+    <p *ngIf="users.length == 0">there is no user found</p>
+    <div *ngIf="users.length > 0">
+        <div *ngFor="let user of users">
+            <span>id: {{user.id}}</span>
+            <span>email: {{user.email}}</span>
+            <span>userName: {{user.userName}}</span>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div>
+    <h1>find user by user name</h1>
+    <input type="text" [(ngModel)]="userInput1">
+    <button (click)="findlUsersByUserName()">find user by user name</button><br>
+    <span>{{userInput1}}</span>
+    <p *ngIf="users1.length == 0">there is no user found</p>
+    <div *ngIf="users1.length > 0">
+        <div *ngFor="let user of users1">
+            <span>id: {{user.id}} </span>
+            <span>email: {{user.email}} </span>
+            <span>userName: {{user.userName}}</span>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div>
+    <h1>find post by user name have only category id</h1>
+    <input type="text" [(ngModel)]="userInput2">
+    <button (click)="findPostsByUserName()">find post by user name</button><br>
+    <div *ngIf="postsForUser$ | async as posts; else other_content">
+        <p *ngIf="posts.length === 0">there is no post found</p>
+        <div *ngFor="let post of posts" class="card">
+            <span>id: {{post.title}}</span><br>
+            <span>body: {{post.body}}</span><br>
+            <span>category: {{post.categoryId}}</span>
+        </div>
+    </div>
+    <ng-template #other_content>please enter some user name</ng-template>
+</div>
+<hr>
+
+<div>
+    <h1>find all post have category name</h1>
+    <button (click)="findPostsWithCategoryName()">find post have category name</button><br>
+    <div *ngIf="postsWithCategory$ | async as posts; else other_content">
+        <p *ngIf="posts.length === 0">there is no post found</p>
+        <div *ngFor="let post of posts" class="card">
+            <span>id: {{post.title}}</span><br>
+            <span>body: {{post.body}}</span><br>
+            <span>category id: {{post.categoryId}}</span><br>
+            <span>category name: {{post.categoryName}}</span>
+        </div>
+    </div>
+</div>
+<hr>
+
+<div>
+    <h1>find post by user name have category name</h1>
+    <input type="text" [(ngModel)]="userInput4">
+    <button (click)="findPostsByUserNameWithCategoryName()">find post by user name have category name</button><br>
+    <div *ngIf="postsWithCategory4$ | async as posts; else other_content">
+        <p *ngIf="posts.length === 0">there is no post found</p>
+        <div *ngFor="let post of posts" class="card">
+            <span>id: {{post.title}}</span><br>
+            <span>body: {{post.body}}</span><br>
+            <span>category id: {{post.categoryId}}</span><br>
+            <span>category name: {{post.categoryName}}</span>
+        </div>
+    </div>
+</div>
+<hr>
+

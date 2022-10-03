@@ -10,17 +10,17 @@ import { Product2Service } from './service/Product2Service';
 })
 export class Sample2Component implements OnInit {
 
-  products$!: Observable<ProductType[]>;
+  // products$!: Observable<ProductType[]>;
 
-  constructor(private product2Service: Product2Service) { }
+  // constructor(private product2Service: Product2Service) { }
 
   ngOnInit(): void {
-    this.products$ = this.product2Service.products$;
+   
   }
 
-  getProductByUserName(userName: string){
-    this.product2Service.getProductByUserName(userName);
-  }
+  // getProductByUserName(userName: string){
+  //   this.product2Service.getProductByUserName(userName);
+  // }
 
 
 }
