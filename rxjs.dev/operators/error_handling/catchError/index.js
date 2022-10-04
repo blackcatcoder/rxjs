@@ -15,3 +15,8 @@ of(1, 2, 3, 4, 5)
 
 
 // conclusion
+/*
+
+Catches errors on the observable to be handled by returning a new observable or throwing an error.
+
+*/
