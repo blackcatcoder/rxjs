@@ -2,28 +2,38 @@ const {  Subject, of, tap, connect, take, mergeWith, map, filter, interval, conn
 
 
 
-// cold observable
-const interval$ = interval(1000).pipe(take(5));
-const subject = new Subject();
+// ex 2 - without connectable
+const source0$ = of(1, 2, 3).pipe(tap((data) => console.log("processing: ", data)), map(() => Math.random()));
+const subscription01 = source0$.subscribe((data) => console.log('data 1: ', data))
+const subscription02 = source0$.subscribe((data) => console.log('data 2: ', data))
+/*
+without connectable it will
+- observable cold
+- observable unicast
+*/
 
-interval$.subscribe(subject);
-subject.subscribe(console.log);
 
-
-
-
-// suggested refactor
-const tick$ = connectable(timer(1000), {
+// ex 2 - with connectable
+const source$ = interval(1000).pipe(tap((data) => console.log("processing: ", data)), take(3), map(x => Math.random()))
+const tick$ = connectable(source$, {
   connector: () => new Subject()
 });
 tick$.connect();
 
-tick$.subscribe(console.log);
+const subscription1 = tick$.subscribe({next: (data) => console.log('result 1: ', data), complete: () => console.log("complete 1")});
+const subscription2 = tick$.subscribe({next: (data) => console.log('result 2: ', data), complete: () => console.log("complete 2")});
 
+
+setTimeout(() => {
+  subscription1.unsubscribe();
+  subscription2.unsubscribe();
+}, 10000);
 
 /*
 conclusion
 
-- for convert cold to hot observable 
+- convert cold to hot observable 
+- convert observable from unicast to multicast
+(can share state to multiple subscriber)
 
 */

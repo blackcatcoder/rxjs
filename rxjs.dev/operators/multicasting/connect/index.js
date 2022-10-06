@@ -38,23 +38,23 @@ source$.pipe(
 
 // example 2
 // with connect
-console.log("-----------------------")
+console.log("------------connect-----------")
 const source2$ = of(1, 2, 3, 4, 5)
  
 source2$.pipe(connect(share$ => merge(
-    share$.pipe(map(x => x)),
-    share$.pipe(map(x => x*2))
+    share$.pipe(tap(() => console.log("obs 1")), map(x => x)),
+    share$.pipe(tap(() => console.log("obs 2")), map(x => x*2))
 ))).subscribe(console.log);
 
 
 // example 3
 // without connect
-console.log("-----------------------")
+console.log("----------without connect-------------")
 const source3$ = of(1, 2, 3, 4, 5)
  
 merge(
-  source3$.pipe(map(x => x)),
-  source3$.pipe(map(x => x*2))
+  source3$.pipe(tap(() => console.log("obs 1")), map(x => x)),
+  source3$.pipe(tap(() => console.log("obs 2")), map(x => x*2))
 ).subscribe(console.log);
 
 
@@ -64,9 +64,12 @@ conclusion
 
 
 if 1 observable after we transform to 2 observable.
-we use connect() to make sure that 2 observable have output pararrel.
+we use connect() to make sure that 2 observable have output parallel.
 - if we do not have connect observable 1 finish and then observable 2
-- if we have connect observable 1 and observable 2 have print output pararrel
+- if we have connect observable 1 and observable 2 have print output parallel
 (connect it means connect 2 observable to 1 but keep parrarel)
+
+- connect will  make cold observable to hot observable
+
 
 */

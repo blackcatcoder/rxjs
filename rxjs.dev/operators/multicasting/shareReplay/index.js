@@ -1,5 +1,7 @@
-const { interval, take, shareReplay, tap } = rxjs;
+const { interval, take, shareReplay, tap, map, of } = rxjs;
 
+
+// example 1
 const shared$ = interval(2000).pipe(
   tap(x => console.log('Processing: ', x)),
   take(6),
@@ -12,6 +14,15 @@ shared$.subscribe(y => console.log('sub B: ', y));
 setTimeout(() => {
   shared$.subscribe(y => console.log('sub C: ', y));
 }, 11000);
+
+
+// example 2
+
+const source$ = of(1, 2, 3).pipe(map(x => x), take(2), shareReplay());
+
+source$.subscribe(x => console.log("sub 1: ", x));
+source$.subscribe(x => console.log("sub 2: ", x));
+
 
 // Logs:
 // (after ~2000 ms)
@@ -42,8 +53,13 @@ setTimeout(() => {
 /*
 
 - using for caching
-- make observable from unicast to unicast
+- make observable from unicast to muticast
 - apply for we have subscription subscribe later it can have previous value of same observable.
 - run the example to more understand
+
+
+make cold to hot
+make unicast to multicast
+
 
 */

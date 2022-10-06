@@ -26,4 +26,8 @@ conclusion
 Unicast observable - an observable whose emitted values are not shared amongst subscribers.
 Multicast observable - an observable whose emitted values are shared amongst subscribers.
 
+--- from java perspective---
+unicast like we create instan from java class
+multicast like static variable, we can share static variable for many other ... and they have the same value
+
 */

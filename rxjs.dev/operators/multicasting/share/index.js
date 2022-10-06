@@ -1,4 +1,4 @@
-const { Observable, interval, tap, map, take, share } = rxjs;
+const { Observable, interval, of, tap, map, take, share } = rxjs;
 
 
 // example 1 without share
