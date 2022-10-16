@@ -1,11 +1,16 @@
 const { fromEvent, map, interval, mergeMap, switchMap, catchError, take, timer, combineLatest, combineLatestWith } = rxjs;
 
-const firstTimer = timer(0, 1000); // emit 0, 1, 2... after every second, starting from now
+const observer = {
+    next: (data) => console.log(data),
+    complete: () => console.log('complete')
+}
 
-const secondTimer = timer(500, 1000); // emit 0, 1, 2... after every second, starting 0,5s from now
+const firstTimer = timer(0, 1000); // emit 0, 1, 2... after every second, starting from now
+const secondTimer = timer(500, 1000); // emit 0, 1, 2... after every second, starting after 0,5s from now
 
 const combinedTimers = combineLatest([firstTimer, secondTimer]);
-const subscription = combinedTimers.subscribe(value => console.log(value));
+const subscription = combinedTimers.subscribe(observer);
+
 // Logs
 // [0, 0] after 0.5s
 // [1, 0] after 1s
@@ -14,6 +19,7 @@ const subscription = combinedTimers.subscribe(value => console.log(value));
 
 setTimeout(() => {
     subscription.unsubscribe();
+    console.log('unsubscribe')
 }, 10000);
 
 // ok understood
