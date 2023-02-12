@@ -2,6 +2,7 @@ const { Observable, fromEvent } = rxjs;
 
 // create and observable and put some data
 const observable = new Observable((subscriber) => {
+
     subscriber.next(1);
     subscriber.next(2);
    
@@ -23,10 +24,13 @@ const observer = {
 }
 
 const subscription = observable.subscribe(observer);
+//subscription.unsubscribe();
+setTimeout(() => {
+    subscription.unsubscribe();
+}, 3000);
 
-subscription.unsubscribe();
 
-
+//--------------------------------------------------------
 // create an observable and attach event click to it
 const button = document.getElementById('buttonId');
 const observable2 = new Observable((subscriber) => {
@@ -41,6 +45,7 @@ setTimeout(() => {
 }, 5000);
 
 
+//--------------------------------------------------------
 // each click will create and observable and then log data and then unsubscribe after timeout
 const subscription3 = fromEvent(button, 'click').subscribe((event) => {
     console.log('rxjs: ',event);
@@ -50,6 +55,7 @@ setTimeout(() => {
 }, 10000);
 
 
+//--------------------------------------------------------
 // create an observable and we will have 3 subscription to it
 // we can have how many subscriber as we can
 const observable4 = new Observable((subscriber) => {
@@ -77,3 +83,5 @@ setTimeout(() => {
     subscription4_2.unsubscribe();
     subscription4_3.unsubscribe();
 }, 5000);
+
+//--------------------------------------------------------

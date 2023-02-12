@@ -21,9 +21,11 @@ fromEvent(button, 'click').pipe(throttleTime(1000)).subscribe((event) => {
 
 // rxjs throttleTime -> map
 // transform data before return to subscriber
-fromEvent(button, 'click').pipe(
-    throttleTime(1000),
-    map(data => data.clientX)).subscribe((data) => {
-    console.log('rxjs throttleTime map: ');
-    console.log(data);
+fromEvent(button, 'click')
+    .pipe(
+        throttleTime(1000),
+        map(data => data.clientX))
+    .subscribe((data) => {
+        console.log('rxjs throttleTime map: ');
+        console.log(data);
 })
