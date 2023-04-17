@@ -1,7 +1,7 @@
 const { Observable, throttleTime, map, interval } = rxjs;
 
 // create observer and put value to it each second
-const observable = interval(1000);
+const observable = interval(10);
 
 // here i only provide next function
 const observer = (data) => console.log(data);
