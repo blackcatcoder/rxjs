@@ -34,6 +34,11 @@ const subscription = observableFirstName
 
 
 
+
+// concatMap
+// waits for each inner observable to complete
+
+
 // switchMap
 const observable2 = interval(1000);// after 1s it will auto put a value and increase that value to observable
 //const observer2 = (data) => console.log(data);

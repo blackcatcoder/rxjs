@@ -26,3 +26,4 @@ const subscription3 = secondObs3.subscribe(data => console.log(data));
 
 // map just transform item to new item
 // concatMap concat 2 observable to 1 and respect the order
+// waits for each inner observable to complete

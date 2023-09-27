@@ -11,5 +11,6 @@ conclusion
 - return an observable
 - all items inside observable satisfies the condition specified or not
 
+every(): return true or false
 
 */

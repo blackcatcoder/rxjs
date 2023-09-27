@@ -2,7 +2,7 @@
 const { interval, map, fromEvent, startWith, takeUntil, endWith } = rxjs;
  
 // obs 1
-const ticker$ = interval(5000).pipe(
+const ticker$ = interval(500).pipe(
   map(() => 'tick')
 );
 
