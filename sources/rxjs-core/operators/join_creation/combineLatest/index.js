@@ -5,8 +5,8 @@ const observer = {
     complete: () => console.log('complete')
 }
 
-const firstTimer = timer(0, 1000); //    emit 0, 1, 2... after every second, starting from now
-const secondTimer = timer(500, 1000); //    emit 0, 1, 2... after every second, starting after 0,5s from now
+const firstTimer = timer(0, 1000); //    emit 0,  1, 2... after every second, starting from now
+const secondTimer = timer(500, 1000); //   emit 0, 1, 2... after every second, starting after 0,5s from now
 
 const combinedTimers = combineLatest([firstTimer, secondTimer]);
 const subscription = combinedTimers.subscribe(observer);

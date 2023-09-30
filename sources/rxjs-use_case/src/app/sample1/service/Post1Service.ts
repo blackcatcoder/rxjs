@@ -10,8 +10,8 @@ export class User1Service{
 
     private sample1Url: string = "http://localhost:8080/sample1";
 
-    private userSubject = new Subject<string>();
-    enterUser$ = this.userSubject.asObservable();
+    private userSubject = new Subject<string>();  // for add new event
+    enterUser$ = this.userSubject.asObservable(); // for subscribe event
     
     postsForUser$ = this.enterUser$.pipe(
         switchMap(userName => this.getUserId(userName)),
