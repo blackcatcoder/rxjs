@@ -9,7 +9,7 @@ timer(3000)
 
 // timer => return an observable
 // concatMap => return an observable
-// => after 3s return another observable
+// => after 3s emit 0 to observable
 
 
 // case 2 - only use observable inside timer

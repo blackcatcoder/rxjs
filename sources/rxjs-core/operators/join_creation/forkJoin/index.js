@@ -1,5 +1,6 @@
 const { forkJoin, of, timer } = rxjs;
 
+// Use forkJoin with a dictionary of observable inputs
 const observable = forkJoin({
   foo: of(1, 2, 3, 4),
   bar: Promise.resolve(8),
@@ -16,4 +17,4 @@ observable.subscribe({
 // 'This is how it ends!' immediately after
 
 
-// i do not understand yet
+// Use forkJoin with an array of observable inputs

@@ -21,6 +21,12 @@ export class Sample2Component implements OnInit {
   // getProductByUserName(userName: string){
   //   this.product2Service.getProductByUserName(userName);
   // }
-
-
 }
+
+500
+
+5000
+
+
+
+
